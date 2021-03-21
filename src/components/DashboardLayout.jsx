@@ -19,6 +19,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -81,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
 const DashboardLayout = (props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const userStore = useSelector(state => state.user);
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
@@ -93,6 +96,7 @@ const DashboardLayout = (props) => {
 
   return (
     <div className={classes.root}>
+      {userStore && !userStore.isLoggedIn && (<Redirect to="/login" />)}
       <CssBaseline />
       <AppBar
         position="fixed"

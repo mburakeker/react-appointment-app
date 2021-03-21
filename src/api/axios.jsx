@@ -2,12 +2,9 @@ import {SessionStorageService} from "../services/sessionStorage";
 var axios = require("axios");
 var MockAdapter = require("axios-mock-adapter");
 
-
-var apiUrl = (process.env.NODE_ENV !== 'production')?"http://localhost:6666/":"https://localhost:5000/";
-
 const sessionStorageService = SessionStorageService.getService();
 
-export const axiosInstance = axios.create({baseURL: apiUrl, headers: {'Accept':'application/json'} });
+export const axiosInstance = axios.create({ headers: {'Accept':'application/json'} });
 
 
 axiosInstance.interceptors.request.use(
