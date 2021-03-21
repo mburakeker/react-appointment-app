@@ -34,7 +34,7 @@ axiosInstance.interceptors.response.use((response) => {
     });
 
 
-if(process.env.NODE_ENV !== 'production' || process.env.REACT_APP_CUSTOM_NODE_ENV == true){
+if(process.env.NODE_ENV !== 'production' || process.env.REACT_APP_CUSTOM_NODE_ENV === true){
     var mock = new MockAdapter(axiosInstance);
     mock.onPost("/login", { username: 'john', password: 'doe' }).reply(200, {
         token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",

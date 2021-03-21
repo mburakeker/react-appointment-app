@@ -14,7 +14,6 @@ import MUIDataTable from "mui-datatables";
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
 import {pushAppointment,updateAppointment,deleteAppointment} from "../../store/reducers/appointmentSlice";
-import * as moment from 'moment';
 import Moment from 'react-moment';
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -54,7 +53,7 @@ const AppointmentPage = () => {
     }
     const handleOpenUpdateAppointmentModal = (id) => {
         setUpdateAppointmentId(id);
-        var entry = appointmentStore.list[appointmentStore.list.findIndex(x=>x.id == id)];
+        var entry = appointmentStore.list[appointmentStore.list.findIndex(x=>x.id === id)];
         setUpdateAppointmentDate(entry.date);
         setUpdateAppointmentDescription(entry.description);
         setOpenUpdateAppointmentModal(true);
@@ -252,7 +251,7 @@ const AppointmentPage = () => {
      <DialogTitle id="form-dialog-title">Delete</DialogTitle>
      <DialogContent>
        <DialogContentText>
-         Do you want to delete the appointment on <Moment format="DD/MM/YYYY \at HH:mm">{appointmentStore.list[appointmentStore.list.findIndex(x=>x.id == deleteAppointmentId)].date}</Moment>?
+         Do you want to delete the appointment on <Moment format="DD/MM/YYYY \at HH:mm">{appointmentStore.list[appointmentStore.list.findIndex(x=>x.id === deleteAppointmentId)].date}</Moment>?
        </DialogContentText>
      </DialogContent>
      <DialogActions>
